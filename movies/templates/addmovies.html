@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3 class="text-center text-warning">Add movies here</h3>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="mb-3 w-50 m-auto">
+  <label  class="form-label text-white">Movie title</label>
+  <input type="text" class="form-control" id="" placeholder="MOVIE" name="t">
+</div>
+<div class="mb-3 w-50 m-auto">
+  <label for="exampleFormControlTextarea1" class="form-label text-white">Description</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="d" rows="3"></textarea>
+</div>
+<div class="mb-3 w-50 m-auto">
+  <label for="" class="form-label text-white">Language</label>
+  <input type="text" class="form-control"  placeholder="LANGUAGE" name="l">
+</div><div class="mb-3 w-50 m-auto">
+  <label for="" class="form-label text-white">Year</label>
+  <input type="number" class="form-control"  placeholder="YEAR" name="y">
+</div>
+<div class="mb-3 w-50 m-auto">
+  <label for="" class="form-label text-white">Movie Cover</label>
+  <input type="file" class="form-control"  placeholder="" name="c">
+</div>
+<div class="mb-3 w-25 m-auto">
+
+  <input type="submit" class="form-control" value="ADD">
+</div>
+</form>
+{% endblock %}

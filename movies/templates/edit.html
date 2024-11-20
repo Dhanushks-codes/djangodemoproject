@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-sm w-75" >
+<h3 class="text-center text-warning">Edit Details</h3>
+<form method="POST" enctype="multipart/form-data" class="">
+    {% csrf_token %}
+<div class="mb-3 w-50 m-auto">
+  <label  class="form-label text-white">Movie title</label>
+  <input type="text" class="form-control" id="" placeholder="MOVIE" name="t" value="{{movie.title}}">
+</div>
+<div class="mb-3 w-50 m-auto">
+  <label for="exampleFormControlTextarea1" class="form-label text-white">Description</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="d" rows="3">{{movie.description}}</textarea>
+</div>
+<div class="mb-3 w-50 m-auto">
+  <label for="" class="form-label text-white">Language</label>
+  <input type="text" class="form-control"  placeholder="LANGUAGE" name="l" value="{{movie.language}}">
+</div><div class="mb-3 w-50 m-auto">
+  <label for="" class="form-label text-white">Year</label>
+  <input type="number" class="form-control"  placeholder="YEAR" name="y" value="{{movie.year}}">
+</div>
+<div class="mb-3 w-50 m-auto">
+<!--    <label for="" class="form-label text-white">Current Cover</label>-->
+<img src="{{movie.cover.url}}" class="img-thumbnail" width="150px" height="100px"><br>
+  <label for="" class="form-label text-white">Change Cover</label>
+  <input type="file" class="form-control"  placeholder="" name="c">
+</div>
+<div class="mb-3 w-25 m-auto d-flex">
+  <input type="submit" class="form-control mx-2" value="Update">
+  <input type="reset" class="form-control" value="Cancel">
+</div>
+</form>
+</div>
+{% endblock %}
