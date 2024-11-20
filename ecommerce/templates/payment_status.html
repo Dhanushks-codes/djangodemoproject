@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb Section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Fresh and Organic</p>
+                    <h1>Payment</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Success Section -->
+<div class="container text-center my-5">
+    <div class="success-icon mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            <path d="M10.97 6.97a.235.235 0 0 0-.02-.022L7.477 10.414 5.525 8.462a.75.75 0 1 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l4-4a.75.75 0 0 0-1.06-1.06z"/>
+        </svg>
+    </div>
+    <h1 class="text-success">Payment Successful!</h1>
+    <p class="text-muted mb-4">Thank you for your payment. Your transaction was completed successfully.</p>
+    <div>
+        <a href="" class="btn btn-primary me-3">View Your Orders</a>
+        <a href="" class="btn btn-outline-secondary">Continue Shopping</a>
+    </div>
+</div>
+
+<style>
+    .success-icon svg {
+        animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+    .breadcrumb-section {
+        background: #f4f4f4;
+        padding: 20px 0;
+    }
+</style>
+{% endblock %}

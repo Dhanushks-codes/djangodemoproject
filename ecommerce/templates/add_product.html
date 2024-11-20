@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="breadcrumb-section breadcrumb-bg p-5">
+
+	</div>
+<div class="card-body">
+    <h4 class="text-dark text-center">Add New Product</h4>
+    <div class="billing-address-form">
+    <form method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+         <label>Choose Category</label>
+        <p>
+
+        <select class="sub-menu"style="width: 272px;height: 31px;" name="cat">
+<option name="">Choose Category</option>
+            {%  for i in links %}
+
+            <option class="sub-menu" value="{{ i.id }}" >{{i.name}}</option>
+            {% endfor %}
+        </select></p>
+        <label>New Product</label>
+        <p><input type="text" placeholder="Product" name="pro"></p>
+         <label>Description</label>
+        <p><textarea  placeholder="Description" name="d"></textarea></p>
+        <label>Price</label>
+        <p><input type="number" placeholder="Price" name="p"></p>
+        <label>Stock</label>
+        <p><input type="number" placeholder="Stock" name="s"></p>
+        <label>Upload Image</label>
+        <p><input type="file" placeholder="image" name="i"></p>
+ <div class="">
+            <input type="submit" class="boxed-btn btn-lg mx-2 mt-3" value="Add">
+            <input type="submit" class="bordered-btn btn-lg mx-2 mt-3" value="Cancel" >
+ </div>
+    </form>
+</div>
+</div>
+{% endblock %}

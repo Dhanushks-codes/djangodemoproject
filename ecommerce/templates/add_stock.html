@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="breadcrumb-section breadcrumb-bg p-5">
+</div>
+<div class="card-body">
+    <h4 class="text-dark text-center">Stock Section</h4>
+    <div class="billing-address-form">
+    <form method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+         <label>Item</label>
+        <p><input type="text" readonly  value="{{pro.name}}"></p>
+         <label>Available stock</label>
+        <p><input type="number" readonly name="s" value="{{pro.stock}}"></p>
+		 <label>New stock</label>
+        <p><input type="number" placeholder="New stock" name="n" value=""></p>
+ <div class="">
+            <input type="submit" class="boxed-btn btn-lg mx-2 mt-3" value="Add">
+            <input type="submit" class="bordered-btn btn-lg mx-2 mt-3" value="Cancel" >
+ </div>
+    </form>
+</div>
+</div>
+{% endblock %}

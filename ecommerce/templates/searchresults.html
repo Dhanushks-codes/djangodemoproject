@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Breadcrumb Section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p class="breadcrumb-subtext">Explore Our Collection</p>
+                    <h1 class="breadcrumb-title">Products</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Table Section -->
+<div class="cart-section mt-10 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th class="product-image">Product Image</th>
+                                <th class="product-name">Name</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-category">Category</th>
+                                <th class="product-view">View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if product == None %}
+                         <td colspan="5"><h4>No Results Found</h4></td>
+                        {% else %}
+                            {% for i in product %}
+                            <tr class="table-body-row">
+                                <td class="product-image"><img src="{{ i.image.url }}" alt="{{ i.name }}"></td>
+                                <td class="product-name">{{ i.name }}</td>
+                                <td class="product-price">₹{{ i.price }}</td>
+                                <td class="product-category">{{ i.category.name }}</td>
+                                <td class="product-view">
+                                    <a href="{% url 'shop:detail' i.id %}" class="boxed-btn">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+
+/* Breadcrumb Styling */
+.breadcrumb-section {
+    padding: 11px 0;
+    background: linear-gradient(to right, #f37254, #f79d65);
+    color: #fff;
+}
+
+.breadcrumb-text {
+    text-align: center;
+}
+
+.breadcrumb-subtext {
+    font-size: 1.2rem;
+<!--    margin-bottom: 10px;-->
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.breadcrumb-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Table Styling */
+.cart-table-wrap {
+    overflow-x: auto; /* Ensures responsiveness on smaller devices */
+    margin: 20px 0;
+}
+
+.cart-table {
+    width: 95%; /* Adjusted width to make it visually balanced */
+    margin: auto; /* Centering the table */
+    border-collapse: collapse;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for an elevated look */
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 15px 10px;
+
+}
+
+.cart-table th {
+    background-color: #f37254;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cart-table td img {
+    max-width: 80px;
+    border-radius: 5px;
+}
+
+.table-body-row td {
+    vertical-align: middle;
+}
+
+.product-view a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .breadcrumb-title {
+        font-size: 1.8rem;
+    }
+
+    .breadcrumb-subtext {
+        font-size: 1rem;
+    }
+
+    .cart-table {
+        width: 100%; /* For smaller screens, use full width */
+    }
+}
+</style>
+{% endblock %}

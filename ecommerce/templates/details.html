@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .single-product-img img {
+        transition: transform 4s ease;
+        transform-origin: center;
+    }
+    .single-product-img img:hover {
+        transform: rotateY(360deg);
+    }
+</style>
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg p-5">
+
+	</div>
+	<!-- end breadcrumb section -->
+	<!-- single product -->
+	<div class="single-product mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img src="{{ pro.image.url }}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3>{{pro.name}}</h3>
+						<p class="single-product-pricing"><span>Price</span> {{pro.price}}</p>
+						<p>{{pro.desc}}</p>
+<!--						<p><strong>Stock: </strong>{{pro.stock}}</p>-->
+						{% if user.is_superuser %}
+							{% if pro.stock > 0 %}
+						<p><strong>product in Stock: </strong>{{pro.stock}}</p>
+						    {% else %}
+						<p><strong>product out of Stock </strong>
+							<a class="cart-btn" href="{% url 'shop:addstock' pro.id %}">add stock</a>
+						    {% endif %}
+						{% else %}
+						     {% if pro.stock > 0 %}
+						<p><strong>Stock: </strong>{{pro.stock}}</p>
+                            <a href="{% url 'cart:addtocart' pro.id %}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+
+						      {% else %}
+						<p><strong>product out of Stock </strong>
+							{% endif %}
+
+						<div class="single-product-form">
+<!--							<form action="index.html">-->
+<!--								<input type="number" placeholder="0">-->
+<!--							</form>-->
+							<p><strong>Categories: </strong>Fruits, Organic</p>
+						</div>
+						{% endif %}
+						<h4>Share:</h4>
+						<ul class="product-share">
+							<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href=""><i class="fab fa-twitter"></i></a></li>
+							<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+							<li><a href=""><i class="fab fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end single product -->
+{% endblock %}

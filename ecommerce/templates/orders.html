@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Your</p>
+                    <h1>Orders</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    {% for i in orders %}
+    <div class="card mb-4 shadow-sm">
+        <div class="row g-0">
+            <!-- Product Image -->
+            <div class="col-md-4">
+                <img src="{{ i.product.image.url }}" class="img-fluid rounded-start" alt="{{ i.product.name }}">
+            </div>
+            <!-- Product Details -->
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.product.name }}</h5>
+                    <p class="card-text"><strong>Price:</strong> ₹{{ i.product.price }}</p>
+                    <p class="card-text"><strong>Number of Items:</strong> {{ i.no_of_items }}</p>
+                    <p class="card-text"><strong>Order ID:</strong> {{ i.order_id }}</p>
+                    <p class="card-text"><strong>Order Date:</strong> {{ i.ordered_date }}</p>
+                    <p class="card-text">
+                        <strong>Delivery Status:</strong>
+                        <span class="badge {% if i.delivery_status == 'Delivered' %}bg-success{% else %}bg-warning text-dark{% endif %}">
+                            {{ i.delivery_status }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .breadcrumb-section {
+        background: #f4f4f4;
+        padding: 20px 0;
+    }
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    .card-text {
+        margin-bottom: 5px;
+    }
+    .badge {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+</style>
+{% endblock %}

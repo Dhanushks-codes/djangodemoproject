@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="breadcrumb-section breadcrumb-bg p-5">
+	</div>
+<div class="container p-4">
+    <h1 class="text-center orange-text" >Sign up!</h1>
+    <form action="" method="POST" class=" rounded  breadcrumb-bg p-4 mx-auto" enctype="multipart/form-data"style="
+    /* border-radius: 15px; */
+    max-width: 527px;
+    background: #374b56;
+">
+        {% csrf_token %}
+                <div class="mb-3">
+            <input class="form-control p-3" required type="text" placeholder="First Name" aria-label="First Name" name="f">
+        </div>
+        <div class="mb-3">
+            <input class="form-control p-3" required type="text" placeholder="Last Name" aria-label="Last Name" name="l">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control p-3" required type="email" placeholder="Email" aria-label="Email" name="e">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control p-3" required type="text" placeholder="Username" aria-label="Username" name="u">
+        </div>
+        <div class="mb-3">
+            <input class="form-control p-3" required type="password" placeholder="Password" aria-label="Password" name="p">
+        </div>
+        <div class="mb-3">
+            <input class="form-control p-3" required type="password" placeholder="Confirm Password" aria-label="Confirm Password" name="cp">
+        </div>
+        <div class="text-center">
+            <input type="submit" class="boxed-btn btn-lg mx-2 mt-3" value="Sign Up">
+            <input type="submit" class="bordered-btn btn-lg mx-2 mt-3" value="Cancel" >
+        </div>
+    </form>
+</div>
+{% endblock %}
